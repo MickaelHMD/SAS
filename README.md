@@ -1494,6 +1494,19 @@ dig -x 192.168.3.64
 dig -x 192.168.3.132
 ```
 
+Pour le serveur dns secondaire , on confgure c4 avec l'ip static 192.168.3.6 en modifiant
+/var/lib/lxc/c4/config. On édite le fichier /etc/resolv.conf de c4 avec:
+```
+domain asr.fr
+search asr.fr
+nameserver 192.168.3.5
+nameserver 192.168.3.6
+```
+On édite de même /etc/resolv.conf de c1 puis on installe bind9.
+
+Ennsuite on configure le fichier /etc/dhcp/dhcpd.conf de c1 en rajoutant l'ip 192.168.3.6 à la ligne
+```domain-name-servers```
+
 
 
 
