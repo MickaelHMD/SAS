@@ -1,8 +1,8 @@
-Ctl TD1
+**TD1**
 
-1. Ligne de commande : mode Interactif
+**1. Ligne de commande : mode Interactif**
 
-	1.1 Terminologie
+**1.1 Terminologie**
 
 -interpréteur de commande : logiciel système de l’OS qui analyse, de traduit et exécute des commandes
 
@@ -28,14 +28,14 @@ Ctl TD1
 
 -wildcard : caractère qui remplace le début ou la fin d’un mot
 
-	1.2 Trouver de l’aide
+**1.2 Trouver de l’aide**
 		
-		1.2.1 Man pages
+**1.2.1 Man pages**
 
 
 La commande « man man » permet d’afficher les informations sur la commande « man ». De manière général la commande man sert à afficher la documentation de sa commande passer en paramètre.
 
-		1.2.3 Manuel de la commande ls
+**1.2.3 Manuel de la commande ls**
 
 1. La commande ls affiche l'ensemble de ses arguments fichiers autres que des répertoires. Puis ls affiche l'ensemble des fichiers contenus dans chaque répertoire indiqué.
 2. L’option « -a » permet d’afficher les fichiers cachés
@@ -46,19 +46,19 @@ La commande « man man » permet d’afficher les informations sur la commande
 Pour lister tous les fichiers commençant par « u » à la racine du système on peut utiliser la commande la commande « ls -d /u* »
 
 
-	1.2.4 La commande cd
+**1.2.4 La commande cd**
 
 
 -La commande cd permet de se déplacer du répertoire courant au répertoire spécifié en paramètre
 -La commande « cd - » effectue un déplacement du répertoire courant au répertoire où l’on se trouvait précédemment
 
-	1.2.5 Manuel de la commande mkdir
+**1.2.5 Manuel de la commande mkdir**
 
 
 L’option qui permet de créer une hiérarchie de répertoire en une seul commande est -p
 
 
-	1.3 La commande echo
+**1.3 La commande echo**
   	
 La commande echo permet d’afficher une variable ou une chaîne de caractères.
 
@@ -69,8 +69,8 @@ L’option -e permet d’interpréter les caractères précédés d’un « \ 
 
 Enfin les guillemets permettent d’afficher la valeur de la variable LOGNAME avec « $LOGNAME ».Des apostrophes à la place des guillemets ne permet pas cela.
 
-2. Les redirections
-	2.1 Premières redirections
+**2. Les redirections**
+**2.1 Premières redirections**
 
 ls
 ls> file1 #crée le fichier file1 puis y écrit le retour de la fonction ls
@@ -82,16 +82,15 @@ cat file1>>file1 #commande impossible car l’entré est la sortie
 pwd>> file1 #écrit en fin du fichier file1  le chemin du répertoire courant 
 cat file1 > /dev/null # rediriger la sortie vers /dev/null permet de s’en débarrasser
 
+**2.2 Le pipe**
 
-	2.2 Le pipe
 
-
-		2.2.1 pipe et cat
+**2.2.1 pipe et cat**
 
 
 La commande cat sans argument recopie l’entrée standard sur la sortie standard.
 
-		2.2.2 Exemple de pipe
+**2.2.2 Exemple de pipe**
 
 
 ls -R>file1 #écrase le contenue de file1 et y met la sortie de la commande ls -R 
@@ -107,20 +106,20 @@ cat file2 | grep -v root #affiche sur la sortie standard  les lignes du fichier 
 Pour lister les processus n’appartenant pas à root mais qui contiennent root dans leur nom on peut utiliser :  ps aux | grep -Ev "^root" |grep root >processwithroot
 Ceci les consigne dans le fichier « processwithroot »
 
-	2.3 Redirection d’entrées
+**2.3 Redirection d’entrées**
 
 La commande « cat <<eob »  recopie l’entrée sur la sortie standard lorsque la chaine « eob » rencontrer.
 
-3.Gestion de processus
+**3.Gestion de processus**
 
 
-	3.3 Processus en tache de fond
+**3.3 Processus en tache de fond**
 
 Lorsque l’on lance ls dans le nouveau terminal en sommeil rien ne passe car ce dernier est en sommeil donc arrête.
 
 Lorsque le nouveau terminal est mis en tache de fond le processus reprend donc la commande ls fonctionne.
 
-	 	3.3.1 Application sur les états de processus
+**3.3.1 Application sur les états de processus**
 	
 
  Lorsque le processus du script est placé en arrière plan et attend une entrée, il y a un problème lorsque l’on envoie une entré au processus en premier plan avec « ls ».Le processus en arrière plan n’a pas l’air de recevoir l’entré. La sortie standard est partagée mais pas l’entrer standard d’où le problème.
@@ -132,7 +131,7 @@ Lorsque le nouveau terminal est mis en tache de fond le processus reprend donc l
 
 
 
-	3.5 Jobs
+**3.5 Jobs**
 
 
 emacs &
@@ -149,15 +148,15 @@ Ctrl + C # tue le processus xterm
 kill%1 # tue emacs en arrière plan
 jobs# affiche qu’il reste firefox en arrière plan les autre processus ont été tué
 
-	3.6 Chaîner les processus
+**3.6 Chaîner les processus**
 
-		3.6.1 Première chaîne de processus	
+**3.6.1 Première chaîne de processus**
 
 La commande à réaliser est la suivante :
 grep root /etc/passwd && echo « root existe »
 Le && est fait de façon à ce que la deuxième commande s’exécute que si la première renvoie un résultat positif.
 
-		3.6.2  Chaîne plus évoluée
+**3.6.2  Chaîne plus évoluée**
 
 
 La commande à réaliser est la suivante :
@@ -165,9 +164,9 @@ ps aux | grep -v grep | grep firefox > /dev/null  && echo  "Firefox is running" 
 
 Si la commande à gauche du « || » ne renvoie pas un résultat positif alors celle à sa droite est exécutée
 
-4. Le Système d’exploitation GNU/Linux 
+**4. Le Système d’exploitation GNU/Linux **
 
-	4.2 Questions
+**4.2 Questions**
 
 -Mon répertoire personnel possède les droits  rwx r-x r-x. Autrement dis j’ai le droit de lecture d’écriture  et d’éxecution. Mon groupe à le droit de lecture et d’éxécution. De même pour le reste du monde.
 
@@ -188,9 +187,9 @@ ou	chmod 750 mydir
 
 
 
-5. Les variables
+**5. Les variables**
 
-	5.4 Exercices
+**5.4 Exercices**
 
 1. « echo $HOME ». HOME contient le chemin absolue de mon home directory
 
@@ -206,11 +205,11 @@ ou	chmod 750 mydir
 
 7. Chaque shell lorsqu’il démarre possède les variables dont les valeurs sont contenues dans .bashrc En modifiant la variable PS1 dans .bashrc le nouveau terminal aura bien la valeur de PS1 que l’on voulait.
 
-	5.5 Chaîne de caractères
+**5.5 Chaîne de caractères**
 
 echo $HOME # Affiche le contenue de la variable HOME
 
-echo "$HOME" # De même et a l'intérieur d'une paire de guillemets, tous les caractères de chaîne sauf $ \ ` " sont protégés de l'interprétation du shell.
+echo "$HOME" # De même et a l'intérieur d'une paire de guillemets, tous les caractères de chaîne sauf " sont protégés de l'interprétation du shell.
 
 echo ‘$HOME’ #Affiche « $HOME » car à l’intérieur d’une paire d’apostrophe tous les caractères de chaîne sont protégés de l'interprétation du shell.
 echo `$HOME` : le shell tente d’exécuter la commande dont le nom est la valeur de la variable HOME
@@ -219,7 +218,7 @@ TEST=ls
 echo  "`$TEST`" : est équivalent à faire echo sur la chaîne de caractère renvoyer par ls
 test=$(ls);echo $test ; la varibale test reçoit  la chaîne de caractère renvoyer par ls.
 
-6. Les scripts
+**6. Les scripts**
 
 
 #!/usr/bin/bash
@@ -234,9 +233,9 @@ En exécutant ./myscript ça ne fonctionne pas pour 2 raisons :
 
 Il faut donc modifier la permission de myscript avec chmod u+x myscript puis remplacer le shebang par # !/bin/bash
 
-	6.1 Structures de controles
+**6.1 Structures de controles**
 		
-		6.1.1 if...then...else
+**6.1.1 if...then...else**
 
 Le script à réaliser est le suivant :
 
@@ -272,7 +271,7 @@ L’option -d test l’existence d’un dossier et l’option  -w test le droit 
 
 
 
-		6.1.2 for...do...done
+**6.1.2 for...do...done**
 
 
 Un script réalisable  pour afficher a b c d à raison d’une lettre par ligne est le suivant :
@@ -284,7 +283,7 @@ do
 done
 
 
-		6.1.3 while...do...done
+**6.1.3 while...do...done**
 
 Dans la commande :
 
@@ -293,7 +292,7 @@ ls | while read a ;do echo $a; done
 la sortie de la commande ls est redirigé sur l’entrée de la boucle while sous forme d’une chaine de caractères.
 a prend successivement la valeur des chaînes de caractères séparées par un espacement contenuent dans la chaine de caractères à l’entrée du while.
 
-	6.2 Scanner le réseau
+**6.2 Scanner le réseau**
 
 Voici un script solution   :
 
@@ -320,7 +319,7 @@ a vaut 1 si le ping fonctionne.
 
 
 
-	6.3 Script poubelle
+**6.3 Script poubelle**
 
 Voici un script solution   :
 arg=$@
@@ -341,28 +340,27 @@ done
 
 -f teste l’existence du fichier 
 
-7. Gestion des droits
-
-	7.1
+**7. Gestion des droits**
+**7.1**
 
 chmod permet de changer les droits d’un fichiers ou d’un dossiers
 chown permet de changer le propriétaire d’un fichier ou d’un dossiers
 chgrp permet de changer le groupe d'utilisateur possédant un fichier ou un dossier
 
-	7.2
+**7.2**
 
 mkdir data 
 chmod 777 data 
 
-	7.3
+**7.3**
 
 L’utilisateur John pourra effectivement supprimer le fichier toto.txt car tout le monde possède les droits en écriture sur le dossier data.
 
-	7.4
+**7.4**
 
 Un utilisateur peut supprimer un fichier dont il n’est pas le propriétaire   
 
-	7.5
+**7.5**
 
 Il suffit de rajouter le sticky bit au dossier data 
 chmod 1777 data .
@@ -373,16 +371,16 @@ Ainsi seul le propriétaire d’un fichier peut le supprimer
 
 
 
-	7.6
+**7.6**
 
 /dev/null n’est pas un fichier standard c’est un fichier associé à un périphérique et on ne peut écrire dedans. De même pour /dev/sda et /dev/mem
 
-8. Setuid / Setgid
+**8. Setuid / Setgid**
 
-	8.1
+**8.1**
 Les deux fichiers possède le droit SUID et leur propriétaire est root. Cependant il faut que chaque utilisateur puisse changer son mot de passe avec la commande passwd. C’est-à-dire que lorsqu’un utilisateur lance la commande passwd, elle est lancée avec les droits du superutilisateur, ainsi l’écriture pourra se faire dans le fichier /usr/bin/passwd et l’utilisateur aura changé son mot de passe sans être root.
 
-	8.2
+**8.2**
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -396,16 +394,16 @@ int main(){
 	return 0;
 }
 
-	8.3
+**8.3**
 
 gcc uid.c
 chmod 6777 a.out 
 	
-	8.4
+**8.4**
 
 Sachant que le propriétaire du fichier a.out est « demon », lorsque l’on le lance avec l’utilisateur root il renvoie le uid et le gid de demon. Car il est exécuter avec les droit de « demon »  et du groupe « demon » à cause des droits SUID et SGID
 
-	8.5
+**8.5**
 chmod 4777 a.out 
 Cette fois ci a.out le ne possède plus le droit SGID donc lorsque l’on l’exécute avec l’utilisateur root il renvoie le uid de demon et le gid de root.
 
@@ -415,29 +413,29 @@ Cette fois ci a.out le ne possède plus le droit SGID donc lorsque l’on l’ex
 
 
 
-TD2
-5. Installation du système de base
+**TD2**
+**5. Installation du système de base**
 
-	5.1 Partitionnement de la VM
+**5.1 Partitionnement de la VM**
 
 On utilise fdisk
 
-	5.2 Création des systèmes de fichiers
+**5.2 Création des systèmes de fichiers**
 
 
 mkfs.ext4 /dev/sda1
 mkswap /dev/sda5
 
-	5.3 Montage des partitions 
+**5.3 Montage des partitions **
 
 mkdir target
 mount /dev/sda1 target
 
-	5.5 Écriture du système de base
+**5.5 Écriture du système de base**
 
 debootstrap –variant=minbase stable /target http://ftp.fr.debian.org/debian
 
-	5.6 Entrée dans le futur environnement
+**5.6 Entrée dans le futur environnement**
 
 
 Pour pouvoir accéder aux périphériques dans le futur environnement :
@@ -450,15 +448,15 @@ mount -t sysfs none /target/sys
 
 Ensuite chroot /target /bin/bash permet de lancer un shell bash où /target sera la nouvelle racine
 
-	5.7 Mise à jour du systèmes
+**5.7 Mise à jour du systèmes**
 
 Dans notre cas aucun paquet n’est mis à jour car le debootstrap pour installer le système l’a fait depuis une url où les fichiers sont à jour.
 
-	5.8 Installation du noyau
+**5.8 Installation du noyau**
 
 apt-get install linux-image-amd64 permet d’installer le noyau qui sera charger en mémoire au démarrage de la machine.
 
-	5.9 Installation du Grub
+**5.9 Installation du Grub**
 
 apt-get install grub2 
 Permet d’installer le grub sur le MBR
@@ -467,9 +465,9 @@ Permet d’installer le grub sur le MBR
 On fait  vim /etc/default/grub et on rajoute  GRUB_CMDLINE_LINUX=« net.ifnames=0 »
 Dans GRUB_CMDLINE_LINUX, on y met les paramètres à ajouter lors de la détection automatique du système lors d’un démarrage .  Mettre GRUB_CMDLINE_LINUX=« net.ifnames=0 » permet de faire en sorte que si l’utilisateur utilise une seul carte réseau elle s’appellera toujours eth0. Sans ça, il faudra à chaque fois chercher le nom de la carte réseau ce qui peut s’avérer pénible.
 
-	5.10 Finalisation du nouvel environnement
+**5.10 Finalisation du nouvel environnement**
 
-		5.10.2 Renseignement des points de montages
+**5.10.2 Renseignement des points de montages**
 
 
 
@@ -479,12 +477,12 @@ Avec vim /etc/fstab on édit /etc/fstab  avec
 /dev/sda5 none swap defaults 0 0
 
 
-		5.10.3 Installation de paquets additionels
+**5.10.3 Installation de paquets additionels**
 
 
 apt-get install systemd 
 
-		5.10.4 Configuration du réseau
+**5.10.4 Configuration du réseau**
 
 On edite le fichier /etc/systemd/netwotk/eth0.network
 avec :
@@ -501,7 +499,7 @@ systemctl enable systemd-networkd
 systemctl enable systemd-resolved
 
 
-7.Installation des outils d’administration
+**7.Installation des outils d’administration**
 
 Installation de OpenSSH :
 
@@ -511,13 +509,13 @@ apt-get install openssh-client
 PermitRootLogin permet en fonction de sa valeur de se connecter en ssh sur la machine en mode root.
 
 
-TD3
+**TD3**
 
-1 Gestion des utilisateurs, des groupes et des mots de passe
+**1 Gestion des utilisateurs, des groupes et des mots de passe**
 	
-	1.1 A la main 
+**1.1 A la main**
 		
-		1.1.1
+**1.1.1**
 
 
 - /etc/passwd
@@ -603,7 +601,7 @@ c : liste des administrateurs du groupe qui peuvent modifier le mot de passe du 
 d : liste des membre du groupe 
 
 
-		1.1.2
+**1.1.2**
  
 Ajout de « sar :* :: » et « tp2 :* :: » dans gshadow
 Ajout de « sar:x:110 : » « tp2:x:111 » dans group
@@ -612,7 +610,7 @@ Ajout de « sar:x:110 : » « tp2:x:111 » dans group
 
 
 
-		1.1.3
+**1.1.3**
 1)
 Ajout de 
 
@@ -662,27 +660,27 @@ cp /etc/skel/.profile  /home/mike/.profile
 Afin que l’utilisateur mike puisse personnaliser son environnement de travail 
 		
 	
-		1.1.4
+**1.1.4**
 
 Pour ajouter mike au groupe sar il suffit de rajouter « mike » dans la dernière colone de la ligne sar dans /etc/group et /etc/gshadow
 
-		1.1.5
+**1.1.5**
 
 Root ne peut pas voir le mot de passe de mike mais peut le changer 
 
-		1.1.6
+**1.1.6**
 
 id renvoie le UID de l’utilisateur courant , le GID de l’utilisateur courant et le nom des groupes auquel appartient l’utilisateur courant
 		
-		1.1.7
+**1.1.7**
 Pour fermer le compte d’un utilisateur il faut :
 -supprimer la ligne mike dans /etc/shadow et /etc/group
 -supprimer « mike » dans la liste des membres des groupes auxquels il appartient dans /etc/group et /etc/gshadow
 
 
-	1.2 Avec des commandes
+**1.2 Avec des commandes**
 
-		1.2.1
+**1.2.1**
 -groupadd sert à créer un nouveau groupe,  groupadd new_group
 
 -groupdel  sert à supprimer un groupe , groupdel groupeasuppimer
@@ -697,18 +695,18 @@ Pour fermer le compte d’un utilisateur il faut :
 
 -usermod sert à modifier un compte utilisateur. Ex : son login, son gid,…
 
-		1.2.2
+**1.2.2**
 
 useradd elchapo
 userdel elchapo
 		
-		1.2.3
+**1.2.3**
 
 Pour bloquer le compte mike on peut soit  :
 
 -remplacer /bin/bash par /bin/false dans /etc/passwd à la ligne mike 
 -mettre un « ! »  devant le hash dans /etc/shadow à la ligne mike 
-		1.2.4	
+**1.2.4	**
 
 En root :
 adduser elchapo1
@@ -757,7 +755,7 @@ Le serveur déchiffre la clé de session avec sa clé privé qui sera la clé qu
 
 		
 		
-II Authentification du client par le serveur
+**2 Authentification du client par le serveur**
 
 Avant de commencer à communiquer le serveur va vouloir authentifier le client
 Pour cela :
@@ -767,7 +765,7 @@ Pour cela :
 Pour que l’authentification par clé ait lieu il faut préalablement que le client ait  généré une pair de clé publique/privé et qu’il ait diffuser sa clé public au serveur.
 Les étapes suivantes se font automatiquement.Pour authentifier le client, le serveur va chiffrer un message avec la clé public du client. Ensuite le serveur va l’envoyer au client. Le client va déchiffrer le message et le renvoyer au clair au serveur. Si le message correspond bien au message clair initialement envoyer alos le client est authentifié et la communication avec la clé de session peut démarrer.
 
-	2.1
+**2.1**
 
 mv ~/.ssh/knwown_hosts{,.old}
 Renomme le fichier ~/.ssh/knwown_hosts en ~/.ssh/knwown_hosts.old
@@ -780,7 +778,7 @@ Si on remplace la clé publique du serveur par une autre clé publique par exemp
 Pour résoudre ce probleme, il suffit d’effacer la clé publique du serveur du département que l’on possède dans ~/.ssh/knwown_hosts  avec la commande 
 ssh-keygen -f "/home/mike/.ssh/known_hosts" -R [ssh.upfr-info-p6.jussieu.fr]
 
-	2.2 Génération d’un clé asymétrique 
+**2.2 Génération d’un clé asymétrique **
 
 On génère les clés secure et unsecure avec :
 ssh-keygen -t ecdsa
@@ -792,7 +790,7 @@ Dans la clé asymétrique il y a une partie chiffré et une autre qu’il ne l�
 Si on perd la paraphrase on perd la clé.
 
 
-	2.3 Authentification par clé
+**2.3 Authentification par clé**
 
 Déploiement des clés publiques :
 ssh-copy-id -i ~/.ssh/secure 3531763s@ssh.ufr-info-p6.jussieu.fr
@@ -815,7 +813,7 @@ ssh  3531763s@ssh.ufr-info-p6.jussieu.fr
 la connexion avec authentification par clé essaie de se faire avec  ~/.ssh/id_ecdsa qui n’existe pas, c’est pour cette raison qu’il préciser la clé privé.
 
 	
-	2.4 Personnalisation de ssh 
+**2.4 Personnalisation de ssh **
 
 On édite  ~/.ssh/config :
 
@@ -831,7 +829,7 @@ IdentityFile	~/.shh/unsecure
 
 Ainsi, la connexion se fait avec ssh secure ou ssh unsecure
 
-	2.5 Utilisation d’un porte clé
+**2.5 Utilisation d’un porte clé**
 
 L’avantage principal de ssh-agent est qu’il évite de retaper la passphrase à chaque fois.
 Un inconvénient que si un attaquant récupère la mémoire il peutretrouver la passphrase et la clé
@@ -843,9 +841,9 @@ ssh-add ~/.ssh/secure
 => « ssh secure » ne demande plus de passphrase
 
 
-	2.6 Différents modes de connexions
+**2.6 Différents modes de connexions**
 
-		2.6.1 Connexion par rebond 
+**2.6.1 Connexion par rebond **
 
 Depuis la VM 
 ssh 3531763@ppti-14-302-04.ufr-info-p6.jussieu.fr
@@ -863,7 +861,7 @@ puis
 
 
 
-		2.6.2 Redirection de port
+**2.6.2 Redirection de port**
 
 Après avoir installer gnome sur la VM
 Depuis on lance un terminal
@@ -882,7 +880,7 @@ Privileged ports can only be forwarded by root.
 
 En effet, les port non privilégié sont ceux dont le numéro est supérieur à 1024. Pour le port 2000, cela marche bien.
 	
-		2.6.3 Le pivot
+**2.6.3 Le pivot**
 
 L’option -W permet de faire une redirection de port de la machine courante vers la machine cible représenter par %h sur le port %p via la machine pivot donnée à la ligne ProxyCommand 
 
@@ -895,9 +893,9 @@ ProxyCommand	ssh 3531763@ssh.ufr-info-p6.jussieu.fr -W %h:%p
 
 
 
-	TD4 : Containers et packaging
+**TD4 : Containers et packaging**
 
-	1 « Chroot » prison fragile
+**1 « Chroot » prison fragile**
 
 L’utilisation de base de strace est de lancer une commande. Strace permet d’intercepter et d’enregistrer les appels système qui sont fait par la commande et les signaux qui sont reçu par la commande. 
 Avec la commande 
@@ -944,7 +942,7 @@ Lorsque que l’on fait par exemple ping -c 1 google.com dans la prison le ping 
 Or si il y a bien une connexion internet mais quel ne vient pas d’ubuntu alors c’est que la configuration réseau utiliser est celle du système de base hors prison. Donc c’est systemd de debian qui est utiliser pour gérer la connexion réseau. D’où le fait que la prison ne soit bien isolé.
 
 
-	2. les conteneurs lxc
+**2. les conteneurs lxc**
 
 
 Pour créer le conteneur nommer « testconteneur » avec debian on utilise la commande :
@@ -965,7 +963,7 @@ passwd mike
 
 
 
-	3. Utilisation de gestion des paquetage
+**3. Utilisation de gestion des paquetage**
 
 Pour lister les paquetages installés, on utilise :
 dpkg --get-selections
@@ -1004,44 +1002,10 @@ apt-get remove <=>  dpkg -r
 
 apt-get purge <=> dpkg -P 
 
-
-		
-
+**TD5**
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-TD5
-
-
-I Mise en place des containers et configuration
+**I Mise en place des containers et configuration**
 
 On travail avec un Machine virtuel sous Debian Buster.
 
@@ -1231,7 +1195,7 @@ lxc.net.0.ipv4.address = 192.168.3.6
 
 
 
-II Mise en place  et configuration du serveur DHCP
+**II Mise en place  et configuration du serveur DHCP**
 
 
 On modifie l’adresse mac de eth0 de c1  en modifiant  /var/lib/lxc/c1/config avec 
@@ -1345,7 +1309,7 @@ pour interdire le FORWARD et le trafic entrant.
 
 
 
-II Mise en place  et configuration du serveur DNS
+**III Mise en place  et configuration du serveur DNS**
 
 On remarque pour chaque machine que  lorsque l’on modifie /etc/resolv.conf et qu’on la rédémarre le fichier à annuler la modification. Les machines sont sous Debian Buster et lors du redémarrage c’est le serveur DHCP qui réécrit en dernier le fichier resolv.conf. Ainsi en modifiant simplement le fichier /etc/dhcp/dhcpd.conf de c1 comme ce ceci :
 
