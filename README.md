@@ -1,6 +1,4 @@
-# SAS
-
-**TD1**
+Ctl TD1
 
 1. Ligne de commande : mode Interactif
 
@@ -1425,39 +1423,5 @@ ping -c2 c2.asr.fr
 ping -c2 c3.asr.fr
 
 fonctionne correctement. De même pour c2 et c3.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
