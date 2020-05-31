@@ -1505,9 +1505,27 @@ nameserver 192.168.3.6
 On édite de même /etc/resolv.conf de c1 puis on installe bind9.
 
 Ennsuite on configure le fichier /etc/dhcp/dhcpd.conf de c1 en rajoutant l'ip 192.168.3.6 à la ligne
-```domain-name-servers```
+```domain-name-servers``` pour que le serveur secondaire soit paramettré pour c2 et c3.
+
+On édite alors /etc/bind/named.local en rajoutant la ligne ```notify yes;```
+à la zone asr.fr et la zone 3.168.192.in-addr.arpa.
+
+On rajoute les lignes à /etc/bind/db.asr.fr
+```
+ @      IN      NS      c4.asr.fr.
+c4	IN	A	192.168.3.6
+```
+et à /etc/bind/db.3.168.192.in-addr.arpa
+```
+ @      IN      NS      c4.asr.fr.
+ 6      IN      PTR     c4.asr.fr.
 
 
+
+```
+On rajoute  à /etc/bind/named.conf.options ```allow-transfert {192.168.3.6}```
+On se connecte à c4 pour y éditer le fichier named.conf.local exactement comme pour c1 en remplaçant
+```type master;``` par ```type slave;``` et ```notify yes;``` par ```masters {192.168.3.5;};``` dans chaque zone.
 
 
 
