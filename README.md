@@ -1438,4 +1438,33 @@ ping -c2 c3.asr.fr
 ```
 fonctionne correctement. De même pour c2 et c3.
 
+En ce qui conserve le forwarding, si Bind9 ne trouve pas l'ip correspondant à l'url "pinger", par défaut il va 
+exploiter la base de donné de la zone ".". Cette base de donnée se trouve à l'emplacement indiqué au début du fichier 
+/etc/bind/named.conf.default-zones:
+```
+zone "." {
+	type hint;
+	file "/usr/share/dns/root.hints";
+};
+
+...
+
+```
+et si bind9 est à jour alors il trouvera l'ip associé à l'url.
+
+Si l'on souhaite par exemple empécher bind9 d'utiliser cette base de données et forwarder sur un autre dns,
+par exemple 8.8.8.8 (le dns de google), il suffit de rajouter au fichier /etc/bind/named.conf.options dans l'accolade de options :
+```
+forward only;
+forwarders{
+	8.8.8.8;
+};
+
+```
+
+
+
+
+
+
 
