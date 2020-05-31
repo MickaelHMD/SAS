@@ -1462,6 +1462,46 @@ forwarders{
 
 ```
 
+En ce qui concerne la résolution de nom inverse le shéma est le même.
+Dans un premier temps on ajoute au fichier /etc/bind/named.conf.local:
+
+```
+zone "3.168.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.3.168.192.in-addr.arpa";
+
+};
+```
+Puis on crée le fichier /etc/bind/db.3.168.192.in-addr.arpa que l'on édite comme ceci:
+```
+$TTL    604800
+@       IN      SOA     c1.asr.fr. root.asr.fr. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      c1.asr.fr.
+5       IN      PTR     c1.asr.fr.
+64      IN      PTR     c2.asr.fr.
+132     IN      PTR     c3.asr.fr.
+```
+On redémare bind9 et enfin on vérifie que la résolution inverse fonctionne avec la commande dig:
+```
+dig -x 192.168.3.5
+dig -x 192.168.3.64
+dig -x 192.168.3.132
+```
+
+
+
+
+
+
+
+
+
 
 
 
