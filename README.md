@@ -1526,8 +1526,10 @@ et à /etc/bind/db.3.168.192.in-addr.arpa
 On rajoute  à /etc/bind/named.conf.options ```allow-transfert {192.168.3.6}```
 On se connecte à c4 pour y éditer le fichier named.conf.local exactement comme pour c1 en remplaçant
 ```type master;``` par ```type slave;``` et ```notify yes;``` par ```masters {192.168.3.5;};``` dans chaque zone.
-
-
+Enfin on édite /etc/bind/named.conf.options de c4 en rajoutant dans l'acolades d'options
+```
+allow-notify {192.168.3.5;};
+```
 
 
 
