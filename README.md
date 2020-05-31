@@ -3,9 +3,9 @@
 **1. Ligne de commande : mode Interactif**
 
 **1.1 Terminologie**
-
--interpréteur de commande : logiciel système de l’OS qui analyse, de traduit et exécute des commandes
-
+```
+-interpréteur de commande : logiciel système de l’OS qui analyse, de traduit et exécute des commandes
+```
 -terminal : interface permettant d’interagir avec un interpréteur de commande.
 
 -shell : interpréteur de commande destiné aux système d’exploitation unix
