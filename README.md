@@ -1056,7 +1056,7 @@ Cette deuxième commande permet d’installer les dépendances nécessaire à l�
 
 **I Mise en place des containers et configuration**
 
-On travail avec un Machine virtuel sous Debian Buster.
+On travail avec un Machine virtuel sous Debian Buster les containers sont également sous Debian Buster.
 
 Après avoir télécharger et installer lxc, on désactive le service lxc-net avec la commande 
 ```
@@ -1064,7 +1064,7 @@ systemctl disable lxc-net
 ```
 Puis on s’assure que le service ne se relancera pas au démarrage avec 
 ```
-systemctl mask lxc-net.
+systemctl mask lxc-net
 ```
 On désactive ce service car sinon toute la mise en place de l’interface réseau et sa configuration sera automatiquement faite par le script /usr/lib/x86_64-linux-gnu/lxc/lxc-net éxécuté au démarrage. Tout y est configurable à souhait pour peut qu’on y mette  USE_LXC_BRIDGE=«true».
 
@@ -1078,7 +1078,7 @@ lxc.net.0.flags = up
 lxc.net.0.hwaddr = 00:16:3e:00:00:00
 ```
 
-Les clés commençant par lxc.net permettent de définir les paramètre de l’interfaces réseau du des futurs conteneur créer. Le 0 permet de spécifier que les clés paramettront l’interface eth0 des futurs conteneurs.
+Les clés commençant par lxc.net permettent de définir les paramètre de l’interfaces réseau des futurs conteneurs créer. Le 0 permet de spécifier que les clés paramettront l’interface eth0 des futurs conteneurs.
 
 
 -lxc.net.0.type = veth permet de spécifier que  la virtualisation est faite sur la base d’une connexion ethernet avec un câble branché d’un coté sur  l’interface veth de l’hôte de l’autre sur l’interface réseau n°0 du conteneur.
@@ -1114,7 +1114,7 @@ ip link set dev lxcbr0 address 00:16:3e:00:00:00
 ip link set dev lxcbr0 up
 ```
 Avec cette configuration, malheureusement l’interface disparaîtra au redémarrage de la VM.
-Pour que cela reste persistent il faut procéder autrement :
+Pour que cela persiste il faut procéder autrement :
 
 -On indique à systemd de créer l’interface lxcbr0 au démarrage en créant les fichiers suivants :
 
@@ -1530,7 +1530,7 @@ Enfin on édite /etc/bind/named.conf.options de c4 en rajoutant dans l'acolades 
 ```
 allow-notify {192.168.3.5;};
 ```
-
+Pour le DNS secondaire je n'ai pas eu le temps de vérifier que cela focntionnait
 
 
 
