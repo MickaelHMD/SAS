@@ -417,6 +417,7 @@ Cette fois ci a.out le ne possède plus le droit SGID donc lorsque l’on l’ex
 
 
 **TD2**
+
 **5. Installation du système de base**
 
 **5.1 Partitionnement de la VM**
@@ -430,6 +431,7 @@ mkfs.ext4 /dev/sda1
 mkswap /dev/sda5
 ```
 **5.3 Montage des partitions **
+
 ```
 mkdir target
 mount /dev/sda1 target
@@ -622,6 +624,7 @@ Ajout de ``` sar:x:110 : » « tp2:x:111 ```dans group
 
 
 **1.1.3**
+
 1)
 Ajout de 
 
@@ -684,6 +687,7 @@ Root ne peut pas voir le mot de passe de mike mais peut le changer
 ```id``` renvoie le UID de l’utilisateur courant , le GID de l’utilisateur courant et le nom des groupes auquel appartient l’utilisateur courant
 		
 **1.1.7**
+
 Pour fermer le compte d’un utilisateur il faut :
 -supprimer la ligne mike dans /etc/shadow et /etc/group
 -supprimer « mike » dans la liste des membres des groupes auxquels il appartient dans /etc/group et /etc/gshadow
@@ -692,6 +696,7 @@ Pour fermer le compte d’un utilisateur il faut :
 **1.2 Avec des commandes**
 
 **1.2.1**
+
 -groupadd sert à créer un nouveau groupe,  groupadd new_group
 
 -groupdel  sert à supprimer un groupe , groupdel groupeasuppimer
@@ -718,6 +723,7 @@ Pour bloquer le compte mike on peut soit  :
 
 -remplacer /bin/bash par /bin/false dans /etc/passwd à la ligne mike 
 -mettre un « ! »  devant le hash dans /etc/shadow à la ligne mike 
+
 **1.2.4	**
 
 En root :
@@ -736,11 +742,12 @@ où b est la chaîne :
 
 Pour elchapo1 et elchapo2 leur b est différent car leur sel est différent.
 
-2. Secure Shell
+**2. Secure Shell**
 	
 
 
-I Authentification du serveur par le client
+**I Authentification du serveur par le client**
+
 ```
 1)Le client demande à se connecter au serveur avec ssh  ….@…..
 2)Le serveur envoie sa clé publique au client 
@@ -757,6 +764,7 @@ Sinon si le client s’est déjà connecter au serveur mais que la clé publique
 
 Ici la clé publique du serveur envoyé par le serveur correspond à la clé publique du serveur posséder par le client 
 ```
+
 L’étape suivante se fait automatiquement :
 Le client génère un clé symétrique dit clé de session qu’il chiffre avec la clé publique du serveur.
 Le serveur déchiffre la clé de session avec sa clé privé qui sera la clé qui va servir pour chiffrer toute les futurs communications
@@ -766,8 +774,7 @@ Le serveur déchiffre la clé de session avec sa clé privé qui sera la clé qu
 
 
 		
-		
-**2 Authentification du client par le serveur**
+**II Authentification du client par le serveur**
 
 Avant de commencer à communiquer le serveur va vouloir authentifier le client
 Pour cela :
@@ -790,7 +797,9 @@ Si on remplace la clé publique du serveur par une autre clé publique par exemp
 Pour résoudre ce probleme, il suffit d’effacer la clé publique du serveur du département que l’on possède dans ~/.ssh/knwown_hosts  avec la commande 
 ```ssh-keygen -f "/home/mike/.ssh/known_hosts" -R [ssh.upfr-info-p6.jussieu.fr]```
 
-**2.2 Génération d’un clé asymétrique **
+
+**2.2 Génération d’un clé asymétrique**
+
 
 On génère les clés secure et unsecure avec :
 ```ssh-keygen -t ecdsa```
@@ -827,10 +836,10 @@ Par défault avec
 ```
 ssh  3531763s@ssh.ufr-info-p6.jussieu.fr
 ```
-la connexion avec authentification par clé essaie de se faire avec  ~/.ssh/id_ecdsa qui n’existe pas, c’est pour cette raison qu’il préciser la clé privé.
+la connexion avec authentification par clé essaie de se faire avec  ~/.ssh/id_ecdsa qui n’existe pas, c’est pour cette raison qu’il necessaire préciser la clé privé.
 
 	
-**2.4 Personnalisation de ssh **
+**2.4 Personnalisation de ssh**
 
 On édite  ~/.ssh/config :
 ```
@@ -860,7 +869,9 @@ ssh-add ~/.ssh/secure
 
 **2.6 Différents modes de connexions**
 
-**2.6.1 Connexion par rebond **
+
+**2.6.1 Connexion par rebond**
+
 
 Depuis la VM 
 ```
